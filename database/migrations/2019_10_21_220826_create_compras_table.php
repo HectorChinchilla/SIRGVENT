@@ -15,6 +15,8 @@ class CreateComprasTable extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->datetime('fecha');
+            $table->decimal('total', 11, 2);
             $table->timestamps();
         });
     }
