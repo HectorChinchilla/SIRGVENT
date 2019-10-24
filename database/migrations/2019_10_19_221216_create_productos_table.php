@@ -15,6 +15,12 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre_completo');
+            $table->bigInteger('cantidad');
+            $table->decimal('precio_compra', 11, 2);
+            $table->decimal('precio_venta', 11, 2);
+            $table->string('tiempo_produccion');
+            $table->boolean('estado_actual');
             $table->timestamps();
         });
     }
