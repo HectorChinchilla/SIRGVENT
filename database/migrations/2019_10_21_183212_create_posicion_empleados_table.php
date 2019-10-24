@@ -15,6 +15,8 @@ class CreatePosicionEmpleadosTable extends Migration
     {
         Schema::create('posicion_empleados', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('descripcion', 120)->nullable;
             $table->timestamps();
         });
     }
