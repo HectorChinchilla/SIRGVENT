@@ -14,7 +14,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $cliente = Cliente::all();
+
+        return view('clientes.index', compact('cliente'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.create');
     }
 
     /**
@@ -35,7 +37,8 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = Cliente::create($request->all());
+        return redirect('cliente');
     }
 
     /**
@@ -44,9 +47,10 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function show(Cliente $cliente)
+    public function show($id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -55,9 +59,10 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -67,9 +72,11 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, $id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $cliente->update($request->all());
+        return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -78,8 +85,11 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $cliente->delete();
+
+        return redirect('/cliente')->with('success', 'Cliente Eliminado');
     }
 }
