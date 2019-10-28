@@ -14,7 +14,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $produ = Producto::all();
+
+        return view('productos.index', compact('produ'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('productos.create');
     }
 
     /**
@@ -35,7 +37,8 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produ = Producto::create($request->all());
+        return redirect('producto');
     }
 
     /**
@@ -44,9 +47,10 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto $producto)
+    public function show($id)
     {
-        //
+        $produ = Producto::findOrFail($id);
+        return view('productos.show', compact('produ'));
     }
 
     /**
@@ -55,9 +59,10 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Producto $producto)
+    public function edit($id)
     {
-        //
+        $produ = Producto::findOrFail($id);
+        return view('productos.edit', compact('produ'));
     }
 
     /**
@@ -67,9 +72,11 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(Request $request, $id)
     {
-        //
+        $produ = Producto::find($id);
+        $produ->update($request->all());
+        return view('productos.show', compact('produ'));
     }
 
     /**
@@ -78,8 +85,11 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Producto $producto)
+    public function destroy($id)
     {
-        //
+        $produ = Producto::find($id);
+        $produ->delete();
+
+        return redirect('/producto')->with('success', 'Producto Eliminado');
     }
 }
