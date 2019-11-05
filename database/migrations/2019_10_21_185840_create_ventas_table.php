@@ -17,7 +17,7 @@ class CreateVentasTable extends Migration
             $table->bigIncrements('id');
             $table->DateTime('fecha');
             $table->decimal('total', 11, 2);
-            $table->string('descripcion', 120);
+            $table->string('descripcion', 256);
             $table->bigInteger('cliente_id')->unsigned();
             $table->bigInteger('empleado_id')->unsigned();
             $table->timestamps();
