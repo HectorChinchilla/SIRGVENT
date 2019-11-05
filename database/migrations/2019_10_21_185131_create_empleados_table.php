@@ -15,13 +15,13 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_completo');
-            $table->string('direccion');
-            $table->string('correo_electronico');
-            $table->string('telefono');
-            $table->string('c_u_i');
+            $table->string('nombre_completo', 120);
+            $table->string('direccion', 120);
+            $table->string('correo_electronico', 45);
+            $table->string('telefono', 45);
+            $table->string('c_u_i', 45);
             $table->date('fecha_nacimiento');
-            $table->boolean('estado_actual');
+            $table->boolean('estado_actual')->default(1);
             $table->bigInteger('posicion_empleado_id')->unsigned();
             $table->timestamps();
 
