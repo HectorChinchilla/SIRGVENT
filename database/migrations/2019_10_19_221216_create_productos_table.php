@@ -15,12 +15,13 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_completo');
+            $table->string('codigo', 8)->unique();
+            $table->string('nombre_completo', 120);
             $table->bigInteger('cantidad');
             $table->decimal('precio_compra', 11, 2);
             $table->decimal('precio_venta', 11, 2);
-            $table->string('tiempo_produccion');
-            $table->boolean('estado_actual');
+            $table->string('tiempo_produccion', 120);
+            $table->boolean('estado_actual')->default(1);
             $table->timestamps();
         });
     }
