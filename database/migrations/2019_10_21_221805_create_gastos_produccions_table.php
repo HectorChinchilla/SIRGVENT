@@ -15,9 +15,9 @@ class CreateGastosProduccionsTable extends Migration
     {
         Schema::create('gastos_produccions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
+            $table->string('nombre', 120);
             $table->decimal('precio', 11, 2);
-            $table->string('descripcion', 120);
+            $table->string('descripcion', 256)->nullable;
             $table->bigInteger('producto_id')->unsigned();
             $table->timestamps();
 
