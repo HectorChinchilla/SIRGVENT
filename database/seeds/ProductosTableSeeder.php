@@ -13,6 +13,7 @@ class ProductosTableSeeder extends Seeder
     {
         $produ = [
             [
+                'codigo' => '001',
                 'nombre_completo' => 'Ana Cafe 14',
                 'cantidad' => '2000',
                 'precio_compra' => 1.25,
@@ -23,6 +24,7 @@ class ProductosTableSeeder extends Seeder
             ],
 
             [
+                'codigo' => '002',
                 'nombre_completo' => 'Noventa rojo',
                 'cantidad' => '5000',
                 'precio_compra' => 1.10,
