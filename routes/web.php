@@ -24,4 +24,22 @@ Route::resource('cliente', 'ClienteController');
 
 Route::resource('producto', 'ProductoController');
 
+Route::resource('gastos', 'GastosProduccionController');
+
+Route::resource('posi', 'PosicionEmpleadoController');
+
+Route::resource('emple', 'EmpleadoController');
+
+Route::resource('compra', 'CompraController');
+
+Route::resource('detacompra', 'DetalleCompraController');
+
+Route::resource('venta', 'VentaController');
+
+Route::resource('detaventa', 'DetalleVentaController');
+
+Route::resource('usuario', 'UserController');
+
+
+
 
